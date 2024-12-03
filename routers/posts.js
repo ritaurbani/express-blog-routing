@@ -5,9 +5,18 @@ const router = express.Router();
 //Export router
 module.exports = router;
 
-//Index-get - Leggiamo tutti i dati - API per prelevare tutti i dati
+//import list di dati 
+const postsList = require("../data/posts")
+
+//////ROTTE////////
+
+//Index-get - Leggiamo tutti i dati - API per prelevare tutti i dati - Restituisci la lista di dati
 router.get("/", (req, res)=>{
-    res.send("Server del mio blog")
+    const result = {
+        data: postsList,
+        count: postsList.length
+    }
+    res.json(result)
 })
 
 //Show - get
